@@ -97,7 +97,6 @@ Pygments==2.13.0
 PyJWT==2.6.0
 PyMeeus==0.5.12
 pyOpenSSL==22.1.0
-pyparsing==3.0.9
 pywin32==305
 PyYAML==5.4.1
 pyzmq==24.0.1
