@@ -103,9 +103,6 @@ pyrsistent==0.19.3
 pyshp==2.3.1
 python-dateutil==2.8.2
 python-jose==3.3.0
-python-keycloak==2.6.0
-python-keycloak-client==0.2.3
-python-keycloak-client-pkg==0.3.0
 pywin32==305
 PyYAML==5.4.1
 pyzmq==24.0.1
