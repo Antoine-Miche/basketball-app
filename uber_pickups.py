@@ -44,7 +44,6 @@ st.markdown(
 
 
 
-st.divider()
 
 col1, col2, col3 = st.columns(3)
 
@@ -66,7 +65,7 @@ with col2:
     with l1_col3:
         st.write("")
 
-    st.divider()
+
 
     l2_col21, l2_col22, l2_col23 = st.columns([2, 3, 2])
     with l2_col21:
