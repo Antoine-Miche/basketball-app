@@ -41,7 +41,7 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-
+st.divider()
 
 
 
@@ -65,7 +65,7 @@ with col2:
     with l1_col3:
         st.write("")
 
-
+    st.divider()
 
     l2_col21, l2_col22, l2_col23 = st.columns([2, 3, 2])
     with l2_col21:
