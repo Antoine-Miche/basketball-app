@@ -99,7 +99,6 @@ PyMeeus==0.5.12
 pyOpenSSL==22.1.0
 pyparsing==3.0.9
 pyproj==3.4.1
-pyrsistent==0.19.3
 pywin32==305
 PyYAML==5.4.1
 pyzmq==24.0.1
