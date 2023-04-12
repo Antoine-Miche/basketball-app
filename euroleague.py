@@ -15,7 +15,6 @@ st.set_page_config(
     page_title="Euroleague dashboard",
     page_icon="🏀",
     layout = "wide",
-    base="dark"
 
 )
 
