@@ -95,7 +95,6 @@ pydeck==0.8.0
 PyDSTool==0.91.0
 Pygments==2.13.0
 PyJWT==2.6.0
-PyMeeus==0.5.12
 pywin32==305
 PyYAML==5.4.1
 pyzmq==24.0.1
