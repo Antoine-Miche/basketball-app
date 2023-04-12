@@ -8,6 +8,8 @@ from PIL import Image
 import base64
 import plotly.graph_objects as go
 
+st.markdown("<style>body { background-color: #1E1E1E; }</style>", unsafe_allow_html=True)
+
 # Config of the page of our dashboard
 st.set_page_config(
     page_title="Euroleague dashboard",
