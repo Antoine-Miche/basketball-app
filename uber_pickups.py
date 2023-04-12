@@ -19,16 +19,12 @@ st.set_page_config(
 #Import data
 #Import the global data
 data = pd.read_csv("sportsref_download.xls.csv", sep = ";")
+data = data.fillna(0)
 
 #Import the data of the match
 data_of_the_match = pd.read_csv("last_match.csv", sep = ";")
 
 player_photo = pd.read_csv("player_photo.csv", sep = ";")
-
-
-#Importation des logos
-euroleague_logo = Image.open("Imega//euroleague.png")
-team_logo = Image.open("Imega//Logo_AS_Monaco_Basket.png")
 
 
 st.markdown(
@@ -41,9 +37,10 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
+
+
 st.divider()
-
-
 
 col1, col2, col3 = st.columns(3)
 
@@ -94,14 +91,15 @@ with col1:
     
     st.write("<h3 style='text-align: center;font: bold;'>Offensive stats</h3>", unsafe_allow_html=True)
 
-    categories = ["Field goal (%)", "3 points (%)", "Free throw (%)"]
+    categories = ["Field goal (%)", "3 points (%)", "Free throw (%)","Field goal (%)"]
 
     fig = go.Figure()
 
     fig.add_trace(go.Scatterpolar(
         r=[data["FG%"].loc[data["Player"]==player_select].values[0],
         data["3P%"].loc[data["Player"]==player_select].values[0],
-        data["FT%"].loc[data["Player"]==player_select].values[0]],
+        data["FT%"].loc[data["Player"]==player_select].values[0],
+        data["FG%"].loc[data["Player"]==player_select].values[0]],
         theta=categories,
         fill='toself',
         name='Euroleague season',
@@ -112,7 +110,8 @@ with col1:
     fig.add_trace(go.Scatterpolar(
         r=[data_of_the_match["FG%"].loc[data_of_the_match["Player"]==player_select].values[0],
         data_of_the_match["3P%"].loc[data_of_the_match["Player"]==player_select].values[0],
-        data_of_the_match["FT%"].loc[data_of_the_match["Player"]==player_select].values[0]],
+        data_of_the_match["FT%"].loc[data_of_the_match["Player"]==player_select].values[0],
+        data_of_the_match["FG%"].loc[data_of_the_match["Player"]==player_select].values[0]],
         theta=categories,
         fill='toself',
         name='Match',
@@ -164,7 +163,7 @@ with col3:
                    data_of_the_match["BLK"].loc[data_of_the_match["Player"]==player_select].values[0],
                    data_of_the_match["TOV"].loc[data_of_the_match["Player"]==player_select].values[0]]
 
-    diffs = [(m-s)/s*100 for s,m in zip(season_avg, match_stats)]
+    diffs = [((m-s)/s*100) if s!=0 else 0 for s,m in zip(season_avg, match_stats)]
 
     # Créer les graphiques
     fig_bar = go.Figure()
@@ -174,10 +173,10 @@ with col3:
     # Ajouter les annotations avec les différences en pourcentage
     for i, diff in enumerate(diffs):
         if diff > 0:
-            x = match_stats[i] + 0.35
+            x = match_stats[i] + 0.40
             text = f"+{diff:.1f}%"
         else:
-            x = season_avg[i] + 0.35
+            x = season_avg[i] + 0.40
             text = f"{diff:.1f}%"
         fig_bar.add_annotation(x=x, y=categories[i], text=text, 
                                 font=dict(color='white', size=14), 
