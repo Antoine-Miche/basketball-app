@@ -8,7 +8,6 @@ from PIL import Image
 import base64
 import plotly.graph_objects as go
 
-
 # Config of the page of our dashboard
 st.set_page_config(
     page_title="Euroleague dashboard",
@@ -104,8 +103,8 @@ with col1:
         theta=categories,
         fill='toself',
         name='Euroleague season',
-        fillcolor='white',
-        line=dict(color='white', width=3),
+        fillcolor='orange',
+        line=dict(color='orange', width=3),
         opacity=0.5
     ))
     fig.add_trace(go.Scatterpolar(
@@ -129,7 +128,7 @@ with col1:
         range=[0, 1]
         ),
         angularaxis=dict(
-            tickfont=dict(size=13, family='Arial', color='white'),
+            tickfont=dict(size=13, family='Arial', color='orange'),
             linewidth=3,
             type='category',
             direction='clockwise'
@@ -168,7 +167,7 @@ with col3:
 
     # Créer les graphiques
     fig_bar = go.Figure()
-    fig_bar.add_trace(go.Bar(x=season_avg, y=categories, name='Euroleague season', orientation='h', marker=dict(color='white')))
+    fig_bar.add_trace(go.Bar(x=season_avg, y=categories, name='Euroleague season', orientation='h', marker=dict(color='orange')))
     fig_bar.add_trace(go.Bar(x=match_stats, y=categories, name='Match', orientation='h', marker=dict(color='red'), textposition='auto'))
 
     # Ajouter les annotations avec les différences en pourcentage
@@ -180,19 +179,19 @@ with col3:
             x = season_avg[i] + 0.40
             text = f"{diff:.1f}%"
         fig_bar.add_annotation(x=x, y=categories[i], text=text, 
-                                font=dict(color='white', size=14), 
+                                font=dict(color='orange', size=14), 
                                 showarrow=False, align='center')
 
     fig_bar.update_layout(
         barmode='group',
         margin=dict(l=50, r=50, t=50, b=50), height=500,
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
-        yaxis=dict(tickfont=dict(size=14, color='white')),
-        xaxis=dict(tickfont=dict(size=14, color='white'))
+        yaxis=dict(tickfont=dict(size=14, color='orange')),
+        xaxis=dict(tickfont=dict(size=14, color='orange'))
     )
 
     fig_radar = go.Figure()
-    fig_radar.add_trace(go.Scatterpolar(r=season_avg, theta=categories, fill='toself', name='Euroleague season', fillcolor = "white", line=dict(color='white', width=3), opacity=0.5 ))
+    fig_radar.add_trace(go.Scatterpolar(r=season_avg, theta=categories, fill='toself', name='Euroleague season', fillcolor = "orange", line=dict(color='orange', width=3), opacity=0.5 ))
     fig_radar.add_trace(go.Scatterpolar(r=match_stats, theta=categories, fill='toself', name='Match', fillcolor = "red", line=dict(color='red', width=3), opacity=0.5 ))
     fig_radar.update_layout(
         polar=dict(
@@ -202,7 +201,7 @@ with col3:
                 range=[0, max(season_avg+match_stats)]
             ),
             angularaxis=dict(
-                tickfont=dict(size=14, family='Arial', color='white'),
+                tickfont=dict(size=14, family='Arial', color='orange'),
                 linewidth=3,
                 type='category',
                 direction='clockwise'
